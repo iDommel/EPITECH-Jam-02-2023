@@ -441,7 +441,7 @@ MonoBehaviour:
   m_PlayButton: {fileID: 1445342692}
   m_OptionsButton: {fileID: 523915611}
   m_ExitButton: {fileID: 284116639}
-  playSceneTarget: TestScene
+  playSceneTarget: PersoScene 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
