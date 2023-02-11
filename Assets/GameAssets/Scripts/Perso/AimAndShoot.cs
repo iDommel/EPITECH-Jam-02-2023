@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class followMouse : MonoBehaviour
+public class AimAndShoot : MonoBehaviour
 {
     private float timeSinceShoot = 11;
     public GameObject bullet;
@@ -22,11 +22,12 @@ public class followMouse : MonoBehaviour
 
         timeSinceShoot += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 10) {
+        if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 10)
+        {
             timeSinceShoot = 0;
             GameObject bulletInstance = Instantiate(bullet, transform.position + offset, Quaternion.identity);
             bulletInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
-            bulletInstance.SetActive(true); // Has to delete 
+            bulletInstance.SetActive(true); // Has to delete
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
