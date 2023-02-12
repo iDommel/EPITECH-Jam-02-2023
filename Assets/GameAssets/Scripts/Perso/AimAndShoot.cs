@@ -20,16 +20,14 @@ public class AimAndShoot : MonoBehaviour
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        timeSinceShoot += Time.deltaTime;
+        // timeSinceShoot += Time.deltaTime;
+        timeSinceShoot += 10;
 
         if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 10)
         {
             timeSinceShoot = 0;
             GameObject bulletInstance = Instantiate(bullet, transform.position + offset, Quaternion.identity);
-            bulletInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
             bulletInstance.SetActive(true); // Has to delete
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
             direction.Normalize();
             bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * 10;
