@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class move : MonoBehaviour
 {
@@ -20,6 +21,14 @@ public class move : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D)) {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ennemy")
+        {
+            SceneManager.LoadScene("LevelOneScene");
         }
     }
 }
