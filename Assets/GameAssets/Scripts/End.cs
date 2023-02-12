@@ -18,7 +18,7 @@ public class End : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Player" && Hit.nbrOfKill == 15) {
+        if (other.gameObject.tag == "Player" && Hit.nbrOfKill >= 15) {
             Hit.nbrOfKill = 0;
             SceneManager.LoadScene("LevelOneScene");
         }
