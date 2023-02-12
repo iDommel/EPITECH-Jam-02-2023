@@ -33,13 +33,14 @@ public class EnemyPatrol : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (waypoints.Length == 0)
+            return;
         Vector3 p = Vector3.MoveTowards(transform.position,
                                             waypoints[currentWP].transform.position,
                                             speed);
         GetComponent<Rigidbody2D>().MovePosition(p);
 
         Vector3 direction = waypoints[currentWP].transform.position - transform.position;
-        Debug.Log(direction);
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
         if (Vector3.Distance(transform.position, waypoints[currentWP].transform.position) < 0.1f)

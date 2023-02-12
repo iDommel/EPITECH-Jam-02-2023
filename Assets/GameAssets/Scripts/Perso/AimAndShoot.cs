@@ -30,7 +30,7 @@ public class AimAndShoot : MonoBehaviour
             bulletInstance.SetActive(true); // Has to delete
             Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
             direction.Normalize();
-            bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * 10;
+            bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * 15;
         }
     }
 }
