@@ -56,7 +56,6 @@ public class ButtonsScripts : MonoBehaviour
     void ExitButton()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
     }
 
 }
