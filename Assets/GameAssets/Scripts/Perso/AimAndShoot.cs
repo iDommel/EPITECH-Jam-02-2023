@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AimAndShoot : MonoBehaviour
 {
-    private float timeSinceShoot = 11;
+    private float timeSinceShoot = 0;
     public GameObject bullet;
     private Vector3 offset = new Vector3(0.5f, 0.5f, 0);
 
@@ -20,10 +20,10 @@ public class AimAndShoot : MonoBehaviour
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        // timeSinceShoot += Time.deltaTime;
-        timeSinceShoot += 10;
+        timeSinceShoot += Time.deltaTime;
+        // timeSinceShoot += 1;
 
-        if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 10)
+        if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 1)
         {
             timeSinceShoot = 0;
             GameObject bulletInstance = Instantiate(bullet, transform.position + offset, Quaternion.identity);
