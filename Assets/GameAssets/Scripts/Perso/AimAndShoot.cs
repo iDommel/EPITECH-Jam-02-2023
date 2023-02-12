@@ -5,7 +5,9 @@ using UnityEngine;
 public class AimAndShoot : MonoBehaviour
 {
     private float timeSinceShoot = 0;
+    private int nbrOfBalls = 6;
     public GameObject bullet;
+    public GameObject[] myBullet;
     private Vector3 offset = new Vector3(0.5f, 0.5f, 0);
 
     // Update is called once per frame
@@ -23,14 +25,24 @@ public class AimAndShoot : MonoBehaviour
         timeSinceShoot += Time.deltaTime;
         // timeSinceShoot += 1;
 
-        if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 1)
+        if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 0.5f && nbrOfBalls > 0)
         {
+            nbrOfBalls -= 1;
+            myBullet[nbrOfBalls].SetActive(false);
             timeSinceShoot = 0;
             GameObject bulletInstance = Instantiate(bullet, transform.position + offset, Quaternion.identity);
             bulletInstance.SetActive(true); // Has to delete
             Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
             direction.Normalize();
             bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * 15;
+        }
+
+        if (nbrOfBalls == 0 && timeSinceShoot > 3f) {
+            nbrOfBalls = 6;
+            timeSinceShoot = 0;
+            for (int i = 0; i < myBullet.Length; i++) {
+                myBullet[i].SetActive(true);
+            }
         }
     }
 }
