@@ -2,10 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class move : MonoBehaviour
 {
     public float speed = 4f;
+
+    public AudioClip looseSound;
+    public AudioClip startSound;
+
+    private AudioSource m_AudioSource;
+    private GameObject player;
+
+    void Start()
+    {
+        m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.clip = startSound;
+        m_AudioSource.Play();
+        player = GameObject.Find("Player");
+    }
 
     void FixedUpdate()
     {
@@ -24,10 +39,18 @@ public class move : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    async void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ennemy")
         {
+            m_AudioSource.clip = looseSound;
+            m_AudioSource.Play();
+            for (int i = 0; i < player.transform.childCount; i++)
+            {
+                GameObject child = player.transform.GetChild(i).gameObject;
+                child.SetActive(false);
+            }
+            await Task.Delay(1000);
             SceneManager.LoadScene("LevelOneScene");
         }
     }

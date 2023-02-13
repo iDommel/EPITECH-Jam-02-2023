@@ -7,37 +7,21 @@ public class DodgeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     private bool mouse_over = false;
     private RectTransform myTransform;
-    public RectTransform canvaCenter;
+    public RectTransform canvas;
 
     void Start()
     {
         myTransform = GetComponent<RectTransform>();
+        Debug.Log(myTransform.position);
     }
 
     void Update()
     {
         if (mouse_over)
         {
-//            Input.mousePosition / canvas.scaleFactor;
-            
-            Debug.Log("button pos :" + myTransform.position + " mouse position :" + (Input.mousePosition - canvaCenter.position) + " canva center :" + canvaCenter.position);
-
-            if (myTransform.position.x <= Input.mousePosition.x)
-            {
-                myTransform.position += new Vector3(0.1f, 0, 0);
-            }
-            else if (myTransform.position.x >= Input.mousePosition.x)
-            {
-                myTransform.position += new Vector3(-0.1f, 0, 0);
-            }
-            if (myTransform.position.y <= Input.mousePosition.y)
-            {
-                myTransform.position += new Vector3(0, 0.1f, 0);
-            }
-            else if (myTransform.position.y >= Input.mousePosition.y)
-            {
-                myTransform.position += new Vector3(0, -0.1f, 0);
-            }
+            Vector3 randomDirection = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0);
+            Debug.Log(randomDirection);
+            myTransform.position += randomDirection;
         }
     }
 
@@ -51,4 +35,3 @@ public class DodgeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         mouse_over = false;
     }
 }
-

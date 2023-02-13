@@ -9,6 +9,12 @@ public class AimAndShoot : MonoBehaviour
     public GameObject bullet;
     public GameObject[] myBullet;
     private Vector3 offset = new Vector3(0.5f, 0.5f, 0);
+    private AudioSource m_AudioSource;
+
+    void Start()
+    {
+        m_AudioSource = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,6 +34,7 @@ public class AimAndShoot : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1) && timeSinceShoot > 0.5f && nbrOfBalls > 0)
         {
             nbrOfBalls -= 1;
+            m_AudioSource.Play();
             myBullet[nbrOfBalls].SetActive(false);
             timeSinceShoot = 0;
             GameObject bulletInstance = Instantiate(bullet, transform.position + offset, Quaternion.identity);

@@ -12,6 +12,7 @@ public class ButtonsScripts : MonoBehaviour
     public bool isOptionsPanelActive = false;
     public GameObject m_LorePanel;
     public bool isLorePanelActive = false;
+    private AudioSource m_AudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,12 @@ public class ButtonsScripts : MonoBehaviour
         m_OptionsButton.onClick.AddListener(OptionsButton);
         m_ExitButton.onClick.AddListener(ExitButton);
         m_LoreButton.onClick.AddListener(LoreButton);
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     void StartButton()
     {
+        m_AudioSource.Play();
         SceneManager.LoadScene(playSceneTarget);
     }
 
@@ -38,6 +41,7 @@ public class ButtonsScripts : MonoBehaviour
             m_OptionsPanel.SetActive(true);
         }
         isOptionsPanelActive = !isOptionsPanelActive;
+        m_AudioSource.Play();
     }
 
     void LoreButton()
@@ -51,10 +55,12 @@ public class ButtonsScripts : MonoBehaviour
             m_LorePanel.SetActive(true);
         }
         isLorePanelActive = !isLorePanelActive;
+        m_AudioSource.Play();
     }
 
     void ExitButton()
     {
+        m_AudioSource.Play();
         Application.Quit();
     }
 
