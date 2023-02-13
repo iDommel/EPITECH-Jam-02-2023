@@ -2857,9 +2857,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "It's a game about choosing to be a hero or just entering some building
-    and killing everyone. \n\nWhat will you do ? \n\n(It may be a bit boring if you
-    choose to be a hero.)"
+  m_text: 'It''s a game in witch you play Bucky and look for the shield of your friend,
+    Captain America.
+
+
+    This Lore can be "fade" if Lily have pressed this button'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
