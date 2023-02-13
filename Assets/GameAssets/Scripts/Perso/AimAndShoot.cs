@@ -19,6 +19,8 @@ public class AimAndShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.isPaused)
+            return;
         // look at the mouse
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10;
@@ -44,10 +46,12 @@ public class AimAndShoot : MonoBehaviour
             bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * 15;
         }
 
-        if (nbrOfBalls == 0 && timeSinceShoot > 3f) {
+        if (nbrOfBalls == 0 && timeSinceShoot > 3f)
+        {
             nbrOfBalls = 6;
             timeSinceShoot = 0;
-            for (int i = 0; i < myBullet.Length; i++) {
+            for (int i = 0; i < myBullet.Length; i++)
+            {
                 myBullet[i].SetActive(true);
             }
         }

@@ -24,17 +24,23 @@ public class move : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PauseMenu.isPaused)
+            return;
         //move
-        if (Input.GetKey(KeyCode.Z)) {
+        if (Input.GetKey(KeyCode.Z))
+        {
             transform.Translate(Vector2.up * speed * Time.deltaTime);
-        } 
-        if (Input.GetKey(KeyCode.S)) {
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
             transform.Translate(Vector2.down * speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.Q)) {
+        if (Input.GetKey(KeyCode.Q))
+        {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.D))
+        {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
     }

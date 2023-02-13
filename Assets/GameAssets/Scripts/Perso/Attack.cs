@@ -18,8 +18,10 @@ public class Attack : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
-        if (other.gameObject.tag == "Ennemy" && Input.GetKeyDown(KeyCode.Mouse0)) {
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ennemy" && Input.GetKeyDown(KeyCode.Mouse0))
+        {
             m_AudioSource.Play();
             other.gameObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject);
