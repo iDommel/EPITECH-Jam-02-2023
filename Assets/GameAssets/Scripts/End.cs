@@ -39,6 +39,6 @@ public class End : MonoBehaviour
 
     async private void LoadNextLevel() {
         await Task.Delay(3000);
-        SceneManager.LoadScene("LevelOneScene");
+        SceneManager.LoadScene("EndScene");
     }
 }
